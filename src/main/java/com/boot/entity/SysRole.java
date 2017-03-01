@@ -1,8 +1,7 @@
 package com.boot.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Date:2017/2/24 15:50
@@ -17,7 +16,16 @@ public class SysRole {
     @GeneratedValue
     private Long id;
     private String name;
+    @ManyToMany(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER)
+    private List<SysMenu> menus;
 
+    public List<SysMenu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<SysMenu> menus) {
+        this.menus = menus;
+    }
 
     public Long getId() {
         return id;

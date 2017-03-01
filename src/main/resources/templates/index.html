@@ -34,11 +34,11 @@
     <div class="starter-template">
         <h1 th:text="${msg.title}"></h1>
         <p class="bg-primary" th:text="${msg.content}"></p>
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <p class="bg-info" th:text="${msg.extraInfo}"></p>
+        <div >
+            <p sec:authorize="hasAuthority('sys:user:read')" class="bg-info" th:text="${msg.extraInfo}"></p>
         </div>
-        <div sec:authorize="hasRole('ROLE_USER')">
-            <p class="bg-info">无更多显示信息</p>
+        <div >
+            <p sec:authorize="hasRole('aaa')" class="bg-info">无更多显示信息</p>
         </div>
         <form th:action="@{/logout}" method="post">
             <input type="submit" class="btn btn-primary" value="注销"/>

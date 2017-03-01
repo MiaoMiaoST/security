@@ -23,6 +23,8 @@ public class CustomUserService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("用户名不存在");
         }
+//        return new User(user.getUsername(), user.getPassword(), user.getAuthorities());
+        System.out.println(user.getAuthorities().toString());
         return user;
     }
 }
